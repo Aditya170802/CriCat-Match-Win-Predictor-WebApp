@@ -21,14 +21,44 @@
         <h1><b>CRICAT</b> predictor</h1>
         <label id="logo"><label>
     </div>
+    <main class="main">
     <form name="match_data" action="." method="post">
     <div class="matchtype">
-        <label class="fontstyle"><b>Select Format:</b></label>
-        <input class="cnstr" type="text" id="mat_format" name="mat_format" placeholder="Match Format">
+        <label class="fontstyle" for="matchtype"><b>Select Format:</b></label>
+        <select name="matchtype" id="matchtype">
+            <option value="T20i">T20I</option>
+            <option value="odi">ODI</option>
+            <option value="Test">TEST</option>
+        </select>
+        <!-- <input class="cnstr" type="text" id="mat_format" name="mat_format" placeholder="Match Format"> -->
     </div>
     <div class="teams">
-        <input type="text" class="inputteams" id="bat_team" name="bat_team" placeholder="Enter Batting Team">
-        <input type="text" class="inputteams" id="bowl_team" name="bowl_team" placeholder="Enter Bowling Team">
+        <!-- <input type="text" class="inputteams" id="bat_team" name="bat_team" placeholder="Enter Batting Team"> -->
+        <label class="fontstyle" for="bat_team"><b>Team Batting: </b></label>
+        <select name="bat_team" class="inputteams" id="bat_team">
+            <option value="England">England</option>
+            <option value="India">India</option>
+            <option value="Australia">Australia</option>
+            <option value="Pakistan">Pakistan</option>
+            <option value="Afghanistan">Afghanistan</option>
+            <option value="Zimbabwe">Zimbabwe</option>
+            <option value="Sri Lanka">Sri Lanka</option>
+            <option value="New Zealand">New Zealand</option>
+            <option value="South Africa">South Africa</option>
+        </select>
+        <label class="fontstyle" for="bowl_team"><b>Team Fielding: </b></label>
+        <select name="bowl_team" class="inputteams" id="bowl_team">
+            <option value="Australia">Australia</option>
+            <option value="India">India</option>
+            <option value="England">England</option>
+            <option value="Pakistan">Pakistan</option>
+            <option value="Afghanistan">Afghanistan</option>
+            <option value="Zimbabwe">Zimbabwe</option>
+            <option value="Sri Lanka">Sri Lanka</option>
+            <option value="New Zealand">New Zealand</option>
+            <option value="South Africa">South Africa</option>
+        </select>
+        <!-- <input type="text" class="inputteams" id="bowl_team" name="bowl_team" placeholder="Enter Bowling Team"> -->
     </div>
     <!-- this is original work of the BlackBox, do not try to copy it -->
     <div class="teamlist">
@@ -45,6 +75,7 @@
         <input type="submit" id="result_btn" value="PREDICT">
         </div>
     </form>
+    </main>
     <!-- <footer>
             Proudly created by the team BlackBox, it is original do not attempt to copy.
     </footer> -->
