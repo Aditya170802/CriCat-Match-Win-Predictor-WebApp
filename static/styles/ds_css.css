@@ -1,0 +1,87 @@
+.bgpage{
+    background-image: url("stdium1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#logo{
+    height: 140px;
+    /* border-radius: 55%; */
+    width: 140px;
+    background-image: url("logo_transp.png");
+    background-size: cover;
+}
+.toplogo{
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 20px;
+    margin-top: 40px;
+}
+#result_btn{
+    font-size: larger;
+    height: 40px;
+    width: 110px;
+    font-weight: bold;
+    background-color: chartreuse;
+    border-radius: 5px;
+}
+.fontstyle{
+    color: white;
+    font-size: large;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.fstyl2{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+.teams{
+    display: flexbox;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-left: 425px;
+    margin-top: 50px;
+}
+.inputteams{
+    font-size: large;
+    border-radius: 5px;
+    height: 45px;
+    margin-inline: 50px;
+} 
+.container{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+.inputteamsl{
+height: 250px;
+width: 300px;
+margin-inline: 50px;
+border-radius: 45px;
+border-width: 5px;
+border-color: gold;
+}
+.teamlist{
+    margin-left: 270px;
+    margin-top: 42px;
+    display: flex;
+}
+.constraints{
+    padding-top: 30px;
+    display:grid;
+    grid-template-rows: 30px 30px 30px 30px;
+    grid-row-gap: 30px;
+}
+.matchtype{
+    margin-left: 620px;
+    margin-top: 50px;
+}
+.match{
+    margin-inline: 20px;
+}
+.cnstr{
+    border-radius: 5px;
+    width: 160px;
+}
+

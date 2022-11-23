@@ -1,0 +1,36 @@
+format: 
+calculation techniques:
+
+Normalization of data;
+describe data of each country;
+
+1. all players runs on their position vs other team's
+2. all players wickets on their position vs other team's
+3. all players experience vs other team's
+4. captains past records
+5. team's record in/outside country
+
+6. we will be dividing the win weightage into 3 parts:
+ - 50% on bench strength, 40% on past records, 10% on stadium
+
+
+what's remaining:
+- data of all players as batsmen, allr, and bowlers
+- all matches dataset including their stadiums 
+
+
+- now onwards:
+take all t20i data of all countries and make them into 
+one dataset, with country as a column and normalize the data
+normalization should be done in runs and balls.
+
+- calculate effect of captain, as who is the most influential one,
+with their winning percentages.
+
+
+
+what data:
+- country wise dataset win% on ground name
+- country wise dataset win% against particular team
+- country wise dataset win% with captains
+- country wise dataset win% de

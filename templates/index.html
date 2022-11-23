@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="ds_css.css"> -->
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/ds_css.css') }}">
+    <!-- <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script> -->
+    <title>CriCat</title>
+</head>
+
+<body class="bgpage">
+    <!-- <div id="divout"></div>
+    <button type="button" pys-onClick="func">oupt</button> -->
+    <div class="fstyl2 toplogo">
+        <h1><b>CRICAT</b> predictor</h1>
+        <label id="logo"><label>
+    </div>
+    <form name="match_data" action="." method="post">
+    <div class="matchtype">
+        <label class="fontstyle"><b>Select Format:</b></label>
+        <input class="cnstr" type="text" id="mat_format" name="mat_format" placeholder="Match Format">
+    </div>
+    <div class="teams">
+        <input type="text" class="inputteams" id="bat_team" name="bat_team" placeholder="Enter Batting Team">
+        <input type="text" class="inputteams" id="bowl_team" name="bowl_team" placeholder="Enter Bowling Team">
+    </div>
+    <!-- this is original work of the BlackBox, do not try to copy it -->
+    <div class="teamlist">
+        <input type="text" class="inputteamsl" id="team1" name="team1" placeholder="Enter Batting Team Player List">
+        <div class="constraints">
+            <input class="cnstr" type="text" id="ground" name="ground" placeholder="Enter Ground">
+            <input class="cnstr" type="text" id="tw" name="tw" placeholder="Player's Weightage">
+            <input class="cnstr" type="text" id="gw" name="gw" placeholder="Ground's Weightage">
+            <input class="cnstr" type="text" id="pw" name="pw" placeholder="Past's Weightage">
+        </div>
+        <input type="text" class="inputteamsl" id="team2" name="team2" placeholder="Enter Bowling Team Player List">
+    </div>
+        <div class="container">
+        <input type="submit" id="result_btn" value="PREDICT">
+        </div>
+    </form>
+    <!-- <footer>
+            Proudly created by the team BlackBox, it is original do not attempt to copy.
+    </footer> -->
+</body>
+</html>
