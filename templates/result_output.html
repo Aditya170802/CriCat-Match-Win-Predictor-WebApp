@@ -1,16 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>Document</title>
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/new_css.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/new_css.css') }}">
 </head>
+
 <body class="bdy">
     <div class="container">
-    <p>{{result}}</p>
+        <div class="divcontent">
+            <img src="/static/styles/India.png" id="c_logo">
+        </div>
+        <div class="divcontent">
+            <p>{{result}}</p>
+        </div>
+        <label id="winteam">{{team}}</label>
     </div>
+    <script>
+        var x = document.getElementById("winteam");
+        console.log(x.innerHTML)
+        switch (x.innerHTML) {
+            case "England":
+                document.getElementById("c_logo").src = "/static/styles/England.png";
+                break;
+            case "Afghanistan":
+                document.getElementById("c_logo").src = "/static/styles/Afghanistan.png";
+                break;
+            case "Australia":
+                document.getElementById("c_logo").src = "/static/styles/Australia.png";
+                break;
+            case "Bangladesh":
+                document.getElementById("c_logo").src = "/static/styles/Bangladesh.png";
+                break;
+            case "New Zealand":
+                document.getElementById("c_logo").src = "/static/styles/New Zealand.png";
+                break;
+            case "South Africa":
+                document.getElementById("c_logo").src = "/static/styles/South Africa.png";
+                break;
+            case "Zimbabwe":
+                document.getElementById("c_logo").src = "/static/styles/Zimbabwe.png";
+                break;
+            case "Sri Lanka":
+                document.getElementById("c_logo").src = "/static/styles/Sri Lanka.png";
+                break;
+            case "Pakistan":
+                document.getElementById("c_logo").src = "/static/styles/Pakistan.png";
+                break;
+        }
+    </script>
 </body>
+
 </html>

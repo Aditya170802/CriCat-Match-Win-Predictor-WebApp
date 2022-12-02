@@ -9,7 +9,7 @@ def welcome():
 
 @gui_integrate.route('/', methods=['POST'])
 def getValue():
-    game = request.form['mat_format']
+    game = request.form['matchtype']
     bat = request.form['bat_team']
     bowl = request.form['bowl_team']
     pl1 = request.form['team1']
@@ -20,10 +20,12 @@ def getValue():
     pl2 = request.form['team2']
 
     arr = [tw, gw, pw]
-    lp1 = pl1.split(',')
-    lp2 = pl2.split(',')
+    lp1 = pl1.split(', ')
+    lp2 = pl2.split(', ')
     # res = pw
     res, team = Calc.calc(game, bat, bowl, grnd, lp1, lp2, arr)
+    if res=="Error":
+        return render_template('errortemplate.html', result=res, team=team)
     return render_template('result_output.html', result=res, team=team)
 
 if __name__=='__main__':

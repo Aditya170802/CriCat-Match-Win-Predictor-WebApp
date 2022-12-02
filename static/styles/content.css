@@ -1,0 +1,190 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.cc1 {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background-image: url('./justin-wei-nxpWWUh6l-M-unsplash.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.cc1 span {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    animation: text 4s;
+}
+
+.remove {
+    margin-top: 250px;
+}
+
+.text1 {
+    color: rgba(255, 255, 255, 0.815);
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: -10px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.text2 {
+    font-size: 60px;
+    /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+    color: rgba(255, 234, 0, 0.795);
+    font-family: monospace;
+}
+
+.enter {
+    display: block;
+    margin-top: 150px;
+    font-size: larger;
+    text-decoration: none;
+    color: rgb(219, 219, 219);
+    font-family: monospace;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+.enterlink {
+    animation: fadeInRight 4s;
+}
+
+@keyframes text {
+    0% {
+        color: transparent;
+        letter-spacing: -28px;
+    }
+
+    50% {
+        letter-spacing: 14px;
+    }
+
+    100% {
+        letter-spacing: 1px;
+    }
+}
+
+
+@-webkit-keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateX(40px);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+    }
+    to {
+      text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+    }
+}
+
+.ball {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-image: url(./ball_animate.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-blend-mode: normal; */
+    animation: bounce 0.5s;
+    animation-direction: alternate;
+    animation-timing-function: cubic-bezier(.5, 0.05, 1, .5);
+    animation-iteration-count: infinite;
+    position: absolute;
+    top: 380px;
+    left: 70vw;
+}
+
+@keyframes bounce {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        transform: translate3d(0, 300px, 0);
+    }
+}
+
+.credit {
+    color: rgba(255, 255, 255, 0.438);
+    position: fixed;
+    bottom: 20px;
+    left: 43%;
+    animation: but 4s;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+@keyframes but {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+/* .footerkindathing{
+    margin-top: -110px;
+    height:200px;
+    background-color: black;
+    z-index: 3;
+    
+} */
+
+
+/* errortemplatecss */
+.errorbody{
+    background-image: url('./errorsad.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.hiddenerror{
+    visibility: hidden;
+}
+.errorstmt{
+    font-size: xx-large;
+    font-weight: 500;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+.oops{
+    font-size: 50px;
+    color: red;
+    font-weight: 800;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-right: 10px;
+}
+.errorcontainer{
+    margin-top: 17vh;
+    margin-left: 37vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
