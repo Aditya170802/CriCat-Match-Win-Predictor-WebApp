@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/content.css') }}">
+    <title>CriCat</title>
+</head>
+<body>
+    <div class="cc1" id="cc11">
+        <div class="remove">
+            <span class="text1">Hello there!</span>
+            <span class="text2">This is CriCat</span>
+        </div>
+        <br><br>
+        <div class="enterlink">
+            <a href="/whowins" class="enter" onclick="introoff()">Let's Predict</a>
+        </div>
+        <div class="ball"></div>
+        <div class="credit">
+            Ⓒ created by BlackBox 2022
+            <!--  Ⓒ created by Abhyuday Rai 2022 | Original Work-->
+        </div>
+    </div>
+    <script>
+                function introoff() {
+            document.getElementById("cc11").style.display = "none";
+        }
+    </script>
+</body>
+</html>

@@ -9,13 +9,62 @@
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="ds_css.css"> -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/ds_css.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/content.css') }}">
+
     <!-- <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
     <script defer src="https://pyscript.net/latest/pyscript.js"></script> -->
     <title>CriCat</title>
 </head>
 
 <body class="bgpage">
+    <style>
+        /* CSS to style the loading screen or animation */
+/* CSS to style the loading screen and animation */
+/* CSS to style the loading screen and animation */
+/* CSS to style the loading screen and animation */
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.loading-spinner {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  border-top-color: rgb(255, 0, 0);
+  animation: spin 1s infinite linear;
+}
+
+.loading-text {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 20px;
+  text-align: center;
+}
+
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+
+    </style>
+<div id="loading-screen">
+    <!-- Add your loading animation content here -->
+    <div class="loading-spinner"></div>&nbsp;
+    <p class="loading-text">Fetching...</p>
+  </div>
     <!-- <div id="divout"></div>
     <button type="button" pys-onClick="func">oupt</button> -->
     <div class="fstyl2 toplogo">
@@ -23,66 +72,97 @@
         <label id="logo"><label>
     </div>
     <main class="main">
-        <form name="match_data" action="." method="post">
+        <form name="match_data"  method="post">
             <div class="matchtype">
                 <label class="fontstyle" for="matchtype"><b>Select Format:</b></label>
-                <select name="matchtype" id="matchtype">
-                    <option value="T20i">T20I</option>
-                    <option value="odi">ODI</option>
-                    <option value="Test">TEST</option>
-                </select>
+                <select name="matchtype" id="matchtype" required>
+                    <option value="T20i" {% if format == 'T20i' %}selected{% endif %}>T20I</option>
+                    <option value="odi" {% if format == 'odi' %}selected{% endif %}>ODI</option>
+                    <option value="Test" {% if format == 'Test' or not format %}selected{% endif %}>TEST</option>
+                  </select>
+                  
                 <!-- <input class="cnstr" type="text" id="mat_format" name="mat_format" placeholder="Match Format"> -->
             </div>
             <div class="teams">
                 <!-- <input type="text" class="inputteams" id="bat_team" name="bat_team" placeholder="Enter Batting Team"> -->
                 <label class="fontstyle" for="bat_team"><b>Team Batting: </b></label>
-                <select name="bat_team" class="inputteams" id="bat_team">
-                    <option value="England">England</option>
-                    <option value="India">India</option>
-                    <option value="Australia">Australia</option>
-                    <option value="Pakistan">Pakistan</option>
-                    <option value="Afghanistan">Afghanistan</option>
-                    <option value="Zimbabwe">Zimbabwe</option>
-                    <option value="Sri Lanka">Sri Lanka</option>
-                    <option value="New Zealand">New Zealand</option>
-                    <option value="Bangladesh">Bangladesh</option>
-                    <option value="South Africa">South Africa</option>
-                </select>
+                <select name="bat_team" class="inputteams" id="bat_team" required>
+                    <option value="England" {% if bat == 'England' %}selected{% endif %}>England</option>
+                    <option value="India" {% if bat == 'India' or not bat %} selected{% endif %}>India</option>
+                    <option value="Australia" {% if bat == 'Australia' %}selected{% endif %}>Australia</option>
+                    <option value="Pakistan" {% if bat == 'Pakistan' %}selected{% endif %}>Pakistan</option>
+                    <option value="Afghanistan" {% if bat == 'Afghanistan' %}selected{% endif %}>Afghanistan</option>
+                    <option value="Zimbabwe" {% if bat == 'Zimbabwe' %}selected{% endif %}>Zimbabwe</option>
+                    <option value="Sri Lanka" {% if bat == 'Sri Lanka' %}selected{% endif %}>Sri Lanka</option>
+                    <option value="New Zealand" {% if bat == 'New Zealand' %}selected{% endif %}>New Zealand</option>
+                    <option value="Bangladesh" {% if bat == 'Bangladesh' %}selected{% endif %}>Bangladesh</option>
+                    <option value="South Africa" {% if bat == 'South Africa' %}selected{% endif %}>South Africa</option>
+                  </select>
+                  
                 <label class="fontstyle" for="bowl_team"><b>Team Fielding: </b></label>
-                <select name="bowl_team" class="inputteams" id="bowl_team">
-                    <option value="Australia">Australia</option>
-                    <option value="India">India</option>
-                    <option value="England">England</option>
-                    <option value="Pakistan">Pakistan</option>
-                    <option value="Afghanistan">Afghanistan</option>
-                    <option value="Bangladesh">Bangladesh</option>
-                    <option value="Zimbabwe">Zimbabwe</option>
-                    <option value="Sri Lanka">Sri Lanka</option>
-                    <option value="New Zealand">New Zealand</option>
-                    <option value="South Africa">South Africa</option>
-                </select>
+                <select name="bowl_team" class="inputteams" id="bowl_team" required>
+                    <option value="England" {% if bowl == 'England' or not bowl %} selected{% endif %}>England</option>
+                    <option value="India" {% if bowl == 'India' %}selected{% endif %}>India</option>
+                    <option value="Australia" {% if bowl == 'Australia' %}selected{% endif %}>Australia</option>
+                    <option value="Pakistan" {% if bowl == 'Pakistan' %}selected{% endif %}>Pakistan</option>
+                    <option value="Afghanistan" {% if bowl == 'Afghanistan' %}selected{% endif %}>Afghanistan</option>
+                    <option value="Zimbabwe" {% if bowl == 'Zimbabwe' %}selected{% endif %}>Zimbabwe</option>
+                    <option value="Sri Lanka" {% if bowl == 'Sri Lanka' %}selected{% endif %}>Sri Lanka</option>
+                    <option value="New Zealand" {% if bowl == 'New Zealand' %}selected{% endif %}>New Zealand</option>
+                    <option value="Bangladesh" {% if bowl == 'Bangladesh' %}selected{% endif %}>Bangladesh</option>
+                    <option value="South Africa" {% if bowl == 'South Africa' %}selected{% endif %}>South Africa</option>
+                  </select>
+                      
                 <!-- <input type="text" class="inputteams" id="bowl_team" name="bowl_team" placeholder="Enter Bowling Team"> -->
             </div>
             <!-- this is original work of the BlackBox, do not try to copy it -->
             <div class="teamlist">
-                <textarea class="inputteamsl" id="team1" name="team1"
-                    placeholder="Enter Batting Team Player List.In the order they are playing."></textarea>
+                <div class="inputteamsl">
+                    <label for="team1">{% if not bat %}Team Batting: {% else %}{{ bat }}{% endif %}</label>
+                    <div class="checkbox-container">
+                        <ul class="checkbox-list">
+                          {% for player in pl1 %}
+                            <li>
+                              <label for="team1_{{ loop.index }}">
+                                <input type="checkbox" id="team1_{{ loop.index }}" name="team1" value="{{ player }}" {% if player in selected_team1 %}checked{% endif %} onclick="limitCheckboxSelections('team1', 11, 11, 'result_btn')">
+                                {{ player }}
+                              </label>
+                            </li>
+                          {% endfor %}
+                        </ul>
+                      </div>
+                </div>
+                
                 <div class="constraints">
                     <input class="cnstr" type="text" id="ground" name="ground" placeholder="Enter Ground">
-                    <input class="cnstr" type="text" id="tw" name="tw" placeholder="Player's Weightage">
-                    <input class="cnstr" type="text" id="gw" name="gw" placeholder="Ground's Weightage">
-                    <input class="cnstr" type="text" id="pw" name="pw" placeholder="Past's Weightage">
+                    <input class="cnstr" type="number" id="tw" name="tw" placeholder="Player's Weightage" min="0" max="1" step="0.01">
+                    <input class="cnstr" type="number" id="gw" name="gw" placeholder="Ground's Weightage" min="0" max="1" step="0.01">
+                    <input class="cnstr" type="number" id="pw" name="pw" placeholder="Past's Weightage" min="0" max="1" step="0.01">                    
                 </div>
-                <textarea class="inputteamsl" id="team2" name="team2"
-                    placeholder="Enter Bowling Team Player List. In the order they are playing."></textarea>
+                <div class="inputteamsl">
+                    <label for="team2">{% if not bowl %}Team Fielding: {% else %}{{ bowl }}{% endif %}</label>
+                    <div class="checkbox-container">
+                      <ul class="checkbox-list">
+                        {% for player in pl2 %}
+                          <li>
+                            <label for="team2_{{ loop.index }}">
+                                <input type="checkbox" id="team2_{{ loop.index }}" name="team2" value="{{ player }}" {% if player in selected_team2 %}checked{% endif %} onclick="limitCheckboxSelections('team2', 11, 11, 'result_btn')">
+                            {{ player }}</label>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                </div>
             </div>
             <div class="defaultteams">
                 <input type="checkbox" id="default1" onclick="defaultteam1()">Current Team
                 <input type="checkbox" id="default2" onclick="defaultteam2()">Current Team
             </div>
-            <div class="container" onmouseenter="warnIfNull()">
-                <input type="submit" id="result_btn" value="PREDICT">
+            <div class="container">
+                <input type="submit" name="submit_button" onclick="showLoadingScreen()" id="update_btn" value="LATEST">
+                <input type="submit" name="submit_button" id="result_btn" onmouseenter="warnIfNull()" value="PREDICT">
             </div>
+
         </form>
     </main>
     <!-- <footer>
@@ -109,8 +189,8 @@ Follow the following steps to get your desired output:
 1. Select the format of the match (Test, T20i, or ODI)
 2. Select the batting team
 3. Select the fielding team
-4. Enter the list of playing 11 players of the batting team.
-5. Enter the list of playing 11 players of the fielding team.
+4. Choose the list of playing 11 players of the batting team.
+5. Choose the list of playing 11 players of the fielding team.
 6. Enter the name of the Stadium, where the match is being held.
 7. Enter the weightage (How much you think these factors weigh in teams’ win):
     • Players’ weightage (out of 1)
@@ -136,26 +216,13 @@ So, you can use our tool for predicting the results of the matches held between 
 </pre>
 <p>
     <b><u>How does it work?</u></b><br>
-The application uses Python and its special libraries, to work with all the data extraction, and calculations to provide the desired results. It contains data of hundreds of international (capped) players, and thousands of international matches held till now, since 2010 across all formats. It creates datasets, based on the Effect of Grounds (or stadium) on teams’ games (their records), players’ stats, team vs team stats, tosses effect on the team, etc., and then goes through all these data, to predict with good accuracy. All the required inputs are made from the users’ end on the webpage, and then the backend comes into the picture, providing the most probable outcome. The application mostly uses statistical and descriptive analysis as its major chunk of calculations. The app not is easy to use, but also fun to see with decent designs and graphics to please the eyes of the users.
+The application uses Python and its special libraries, to work with all the data extraction, and calculations to provide the desired results. It contains data of hundreds of international (capped) players, and thousands of international matches held till now, since 2010 across all formats. It also fetches the latest player stats, once the latest button is clicked, which makes it more accurate, reliable. It creates datasets, based on the Effect of Grounds (or stadium) on teams’ games (their records), players’ stats, team vs team stats, tosses effect on the team, etc., and then goes through all these data, to predict with good accuracy. All the required inputs are made from the users’ end on the webpage, and then the backend comes into the picture, providing the most probable outcome. The application mostly uses statistical and descriptive analysis as its major chunk of calculations. The app not is easy to use, but also fun to see with decent designs and graphics to please the eyes of the users.
 
 </p>
             </p>
         </div>
     </div>
-    <div class="cc1" id="cc11">
-        <div class="remove">
-            <span class="text1">Hello there!</span>
-            <span class="text2">This is CriCat</span>
-        </div>
-        <div class="enterlink">
-            <a href="#" class="enter" onclick="introoff()">Let's Predict</a>
-        </div>
-        <div class="ball"></div>
-        <div class="credit">
-            Ⓒ created by BlackBox 2022
-            <!--  Ⓒ created by Abhyuday Rai 2022 | Original Work-->
-        </div>
-    </div>
+    
     <!-- <div class="footerkindathing">
         You cant Scroll down
     </div> -->
@@ -169,19 +236,23 @@ The application uses Python and its special libraries, to work with all the data
             document.getElementById('team2').style.borderColor = "red";
         }
         function warnIfNull() {
-            var a = document.forms["match_data"]["team1"].value;
-            var b = document.forms["match_data"]["team2"].value;
+var a = document.getElementsByName("team1");
+var b = document.getElementsByName("team2");
+
+
             var c = document.forms["match_data"]["ground"].value;
             var d = document.forms["match_data"]["tw"].value;
             var e = document.forms["match_data"]["gw"].value;
             var f = document.forms["match_data"]["pw"].value;
-            if (a == null || a == "", b == null || b == "", c == null || c == "", d == null || d == "", e == null || e == "", f == null || f == "") {
+            if(a.length==0 || b.length==0){
+                alert("Please select the players after clicking Latest");
+                return false;
+            }
+
+            if ( c == null || c == "", d == null || d == "", e == null || e == "", f == null || f == "") {
                 alert("Please Fill All Required Fields");
                 return false;
             }
-        }
-        function introoff() {
-            document.getElementById("cc11").style.display = "none";
         }
         function exit() {
             document.getElementById("helpbox").style.display = "none";
@@ -189,6 +260,46 @@ The application uses Python and its special libraries, to work with all the data
         function comeon() {
             document.getElementById("helpbox").style.display = "inline";
         }
+        function limitCheckboxSelections(checkboxName, minLimit, maxLimit, buttonId) {
+  var checkboxes = document.getElementsByName(checkboxName);
+  var checkedCount = 0;
+  var submitButton = document.getElementById(buttonId);
+  
+  for (var i = 0; i < checkboxes.length; i++) {
+    if (checkboxes[i].checked) {
+      checkedCount++;
+    }
+    
+    if (checkedCount > maxLimit) {
+      checkboxes[i].checked = false;
+    }
+  }
+  
+  if (checkedCount >= minLimit && checkedCount <= maxLimit) {
+    submitButton.disabled = false;
+  } else {
+    submitButton.disabled = true;
+  }
+}
+
+  function validateWeightages() {
+    var tw = parseFloat(document.getElementById('tw').value) || 0;
+    var gw = parseFloat(document.getElementById('gw').value) || 0;
+    var pw = parseFloat(document.getElementById('pw').value) || 0;
+
+    var sum = tw + gw + pw;
+    if (sum !== 1) {
+      alert("Sum of weightages must be equal to 1");
+      return false;
+    }
+
+    return true;
+  }
+  function showLoadingScreen() {
+  // Show the loading screen or animation element
+  document.getElementById('loading-screen').style.display = 'flex';
+}
+
     </script>
 </body>
 
