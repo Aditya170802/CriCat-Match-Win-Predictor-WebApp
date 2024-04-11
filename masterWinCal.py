@@ -2,22 +2,22 @@
 import pandas as pd
 import numpy as np
 
+
 class Calc:
     def calc(format, teambatting, teambowling, ground,playerslistT1,playerslistT2, weightage):
         # reading all the necessary data files on the basis of format of the match
-        
         if(format=="T20i"):
-            players = pd.read_excel('./masterdatafiles/TestGuiT20.xlsx')
+            players = pd.read_excel('./masterdatafiles/norm_players.xlsx')
             versus = pd.read_excel("./masterdatafiles/t20_tvt.xlsx")
             ground_basis = pd.read_excel('./masterdatafiles/GroundEffect.xlsx')
             default = pd.read_excel('./masterdatafiles/T20_PlayingXI.xlsx')
         elif(format=="Test"):
-            players = pd.read_excel('./masterdatafiles/TestGuiTest.xlsx')
+            players = pd.read_excel('./masterdatafiles/norm_players.xlsx')
             versus = pd.read_excel("./masterdatafiles/test_tvt.xlsx")
             default = pd.read_excel('./masterdatafiles/Test_PlayingXI.xlsx')
             ground_basis = pd.read_excel('./masterdatafiles/GroundEffectTest.xlsx')   
         elif(format=="odi"):
-            players = pd.read_excel('./masterdatafiles/TestGuiodi.xlsx')
+            players = pd.read_excel('./masterdatafiles/norm_players.xlsx')
             versus = pd.read_excel("./masterdatafiles/odi_tvt.xlsx")
             ground_basis = pd.read_excel('./masterdatafiles/GroundEffectodi.xlsx')
             default = pd.read_excel('./masterdatafiles/Odi_PlayingXI.xlsx')
